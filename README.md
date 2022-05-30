@@ -1,7 +1,7 @@
 # Stadium Seat Booking Project
 
 
-# Data
+## Data
 User Id and password
 {
     "userName":"anuj",
