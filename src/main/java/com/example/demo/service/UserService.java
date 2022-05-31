@@ -60,4 +60,20 @@ public class UserService {
 	 public String getEncodedPassword(String password) {
 	        return passwordEncoder.encode(password);
 	    }
+	 
+	 
+	 //CRUD for user
+		public Iterable<User> findAll() {
+	        return userdao.findAll();
+	    }
+			
+		public void deleteById(String username) {
+			userdao.deleteById(username);
+			}
+		
+		public void UpdateUser(User user)
+		{
+			userdao.save(user); 
+		}
+	 
 }

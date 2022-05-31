@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
 import javax.persistence.JoinColumn;
@@ -42,6 +43,7 @@ public class User {
 	 	@Column(name="name")
 	 	private String Name;
 		@Column(name="mobilenp")
+		
 	 	private int MobileNo;
 		@Column(name="dob")
 		java.util.Date DateOfBirth=new java.util.Date();
@@ -63,4 +65,11 @@ public class User {
 	            }
 	    )
 	 	private Set<Role> role;
+	 	
+	 	
+	 	@OneToMany(targetEntity =  OrderDetail.class ,cascade = CascadeType. ALL, fetch=FetchType.LAZY)
+	    @JoinColumn(name= "fk_userid",referencedColumnName = "username")
+	    private Set<OrderDetail> orderdetails;
+//	 	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+//	 	Set<User> user;
 }
