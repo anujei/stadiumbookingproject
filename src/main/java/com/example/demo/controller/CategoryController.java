@@ -3,37 +3,48 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Category;
+
 import com.example.demo.service.CategoriesService;
 
+@RestController
+@CrossOrigin
 public class CategoryController {
+
 	@Autowired
-	private CategoriesService categoriesService;
-	
-	@PostMapping("/createEvent")
-	@PreAuthorize("hasRole('Admin')")
-	public ResponseEntity<Category> createEvent(@RequestBody Category category)
+	private CategoriesService categoryService;
+	//create and update
+	@PostMapping("/createCategory")
+	public ResponseEntity<Category> createCategory(@RequestBody Category category)
 	{
-		categoriesService.createCategory(category); 
-		return new ResponseEntity<Category>(categoriesService.createCategory(category),HttpStatus.CREATED);
+		categoryService.create(category); 
+		return new ResponseEntity<Category>(categoryService.create(category),HttpStatus.CREATED);
 	}
-	 @GetMapping("/viewEvent")
-	 @PreAuthorize("hasAnyRole('Admin','User')")
-	 public Iterable<Category> viewEvent(){
-	        return categoriesService.findAll();
+	
+	@GetMapping("/viewCategory")
+	 public Iterable<Category> viewCategory(){
+	        return categoryService.select();
+	  }
+	
+	 @DeleteMapping("/deleteCategory/{Categoryid}")
+	 public void deleteCategory(@PathVariable("Categoryid") int Categoryid) {
+		 categoryService.delete(Categoryid);
 	 }
 	 
-	 @DeleteMapping("/deleteEvent/{id}")
-	 @PreAuthorize("hasRole('Admin')")
-	 public void deleteEvent(@PathVariable("Categoryid") int id) {
-		 categoriesService.deleteEvent(id);
+	 @PostMapping("/UpdateCategory")
+	 
+	 public Category UpdateCategory(@RequestBody Category category) {
+		 categoryService.Update(category);
+		return category;
 	 }
-
+	
+	
 }

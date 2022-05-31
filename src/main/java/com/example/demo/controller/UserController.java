@@ -63,7 +63,6 @@ public class UserController {
 	 // end of user controller
 	
 	@PostMapping({"/registerNewUser"})
-	@PreAuthorize("hasRole('User')")
 	public User registerNewUser(@RequestBody User user) {
         return userService.registerNewUser(user);
     }

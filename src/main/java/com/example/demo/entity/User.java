@@ -43,6 +43,7 @@ public class User {
 	 	@Column(name="name")
 	 	private String Name;
 		@Column(name="mobilenp")
+		
 	 	private int MobileNo;
 		@Column(name="dob")
 		java.util.Date DateOfBirth=new java.util.Date();
@@ -69,4 +70,6 @@ public class User {
 	 	@OneToMany(targetEntity =  OrderDetail.class ,cascade = CascadeType. ALL, fetch=FetchType.LAZY)
 	    @JoinColumn(name= "fk_userid",referencedColumnName = "username")
 	    private Set<OrderDetail> orderdetails;
+//	 	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+//	 	Set<User> user;
 }

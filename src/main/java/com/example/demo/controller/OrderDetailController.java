@@ -21,7 +21,7 @@ public class OrderDetailController {
 	private OrderDetailService orderDetailService;
 	
 	@PostMapping("/createOrder")
-	@PreAuthorize("hasRole('User')")
+	@PreAuthorize("hasAnyRole('User','Admin')")
 	public ResponseEntity<OrderDetail> createOrder(@RequestBody OrderDetail orderDetail)
 	{
 		orderDetailService.create(orderDetail); 
