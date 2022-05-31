@@ -40,16 +40,4 @@ public class OrderDetail {
 	private String PaymentOption;
 	@Column(name="orderstatus")
 	private String OrderStatus;
-	
-//	//foreign key of user
-//	@ManyToOne
-//    @JoinColumn(name ="FK_Userid")
-//    private User user;
-//	
-//	//foreign key of category
-//	
-//	@ManyToOne
-//    @JoinColumn(name ="FK_categoryid")
-//    private Category category;
-
 }
