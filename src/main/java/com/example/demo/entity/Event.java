@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "event")
@@ -11,17 +14,32 @@ public class Event {
  	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="eventid")
- 	private int Eventid;	
+ 	private int Eventid;
+ 	
+ 	@NotNull
  	@Column(name="title")
  	private String Title;
+ 	
+ 	@NotNull
  	@Column(name="description")
  	private String Description;
+ 	
+ 	@NotEmpty
+	@Pattern(regexp="^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$",
+	message="invalid Date format it should be dd/mm/yyyy format")
 	@Column(name="DateTime")
 	String DateTime;
+ 	
+ 	@NotNull
  	@Column(name="status")
  	private Boolean Status;
+ 	
+ 	@NotNull
 	@Column(name="venue")
  	private String Venue;
+ 	
+ 	@NotNull
+ 	@Pattern(regexp="(^$|[0-9]{10})", message="only numeric allowed")
 	@Column(name="totalseats")
  	private int TotalSeats;
  	

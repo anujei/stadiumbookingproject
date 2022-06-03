@@ -15,6 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.id.CompositeNestedGeneratedValueGenerator.GenerationContextLocator;
 
@@ -32,12 +34,21 @@ public class OrderDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="orderid")
 	private int OrderId;
+	
 	@Column(name= "seatno")
+	@NotNull
 	private int SeatNo;
+	
+	@Pattern(regexp = "\\d+",message="should only numberic value")
+	@NotNull
 	@Column(name="total")
 	private float total;
+	
+	@NotNull
 	@Column(name="paymentoption")
 	private String PaymentOption;
+	
+	@NotNull
 	@Column(name="orderstatus")
-	private String OrderStatus;
+	private int OrderStatus;
 }

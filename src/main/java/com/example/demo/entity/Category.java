@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import lombok.Data;
 import lombok.Getter;
@@ -30,13 +32,23 @@ public class Category {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name="categoryid")
 		private int Categoryid;
+		
+		@NotNull
 		@Column(name="categorytitle")
 		private String CategoryTitle;
+		
+		@NotNull
 		@Column(name="price")
+		@Pattern(regexp="(^$|[0-9]{10})", message="only numeric allowed")
 		private Float price;
+		
+		@NotNull
 		@Column(name="status")
 		private boolean status;
+		
+		@NotNull
 		@Column(name="no_of_seat")
+		@Pattern(regexp="(^$|[0-9]{10})", message="only numeric allowed")
 		private int NoOfSeat;
 		
 		
