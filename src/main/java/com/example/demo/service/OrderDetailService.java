@@ -28,8 +28,8 @@ public class OrderDetailService {
 		orderDetailDao.deleteById(OrderId);
 		}
 	
-	public void Update(OrderDetail orderDetail)
+	public OrderDetail Update(OrderDetail orderDetail)
 	{
-		orderDetailDao.save(orderDetail); 
+		return orderDetailDao.save(orderDetail); 
 	}
 }

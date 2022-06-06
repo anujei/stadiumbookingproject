@@ -39,7 +39,7 @@ public class OrderDetail {
 	@NotNull
 	private int SeatNo;
 	
-	@Pattern(regexp = "\\d+",message="should only numberic value")
+//	@Pattern(regexp = "\\d+",message="should only numberic value")
 	@NotNull
 	@Column(name="total")
 	private float total;
@@ -51,4 +51,15 @@ public class OrderDetail {
 	@NotNull
 	@Column(name="orderstatus")
 	private int OrderStatus;
+
+	public OrderDetail(int orderId, @NotNull int seatNo, @NotNull float total, @NotNull String paymentOption,
+			@NotNull int orderStatus) {
+		super();
+		OrderId = orderId;
+		SeatNo = seatNo;
+		this.total = total;
+		PaymentOption = paymentOption;
+		OrderStatus = orderStatus;
+	}
+	
 }

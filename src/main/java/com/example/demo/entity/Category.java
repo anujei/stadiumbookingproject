@@ -55,6 +55,23 @@ public class Category {
 		@ManyToMany(targetEntity =  OrderDetail.class ,cascade = CascadeType. ALL, fetch=FetchType.LAZY)
 	    @JoinColumn(name= "fk_categoryid",referencedColumnName = "Categoryid")
 	    private Set<OrderDetail> orderdetail;
+
+
+		public Category(int categoryid, @NotNull String categoryTitle,
+				@NotNull @Pattern(regexp = "(^$|[0-9]{10})", message = "only numeric allowed") Float price,
+				@NotNull boolean status,
+				@NotNull @Pattern(regexp = "(^$|[0-9]{10})", message = "only numeric allowed") int noOfSeat,
+				Set<OrderDetail> orderdetail) {
+			super();
+			Categoryid = categoryid;
+			CategoryTitle = categoryTitle;
+			this.price = price;
+			this.status = status;
+			NoOfSeat = noOfSeat;
+			this.orderdetail = orderdetail;
+		}
+		
+		
 		
 		
 	}

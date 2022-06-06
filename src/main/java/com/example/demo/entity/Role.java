@@ -27,8 +27,20 @@ public class Role {
 	@Max(value=10,message="role string is too long")
 	private String roleName;
 	
+	
+
 	@Column(name = "roleDescription")
 	@NotEmpty
 	private String roleDescription;
 
+	public Role(@NotEmpty @Max(value = 10, message = "role string is too long") String roleName,
+			@NotEmpty String roleDescription) {
+		super();
+		this.roleName = roleName;
+		this.roleDescription = roleDescription;
+	}
+
+	public Role() {
+		// TODO Auto-generated constructor stub
+	}
 }

@@ -28,4 +28,8 @@ public class EventService {
 	public void deleteEvent(int Eventid) {
 		eventDao.deleteById(Eventid);
 	}
+	public Event Update(Event event)
+	{
+		return eventDao.save(event); 
+	}
 }
