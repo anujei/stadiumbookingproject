@@ -38,7 +38,7 @@ public class UserService {
 	     User adminUser = new User();
 	     adminUser.setUserName("admin@123");
 	     adminUser.setName("admin123");
-	     adminUser.setUserPassword(getEncodedPassword("admin@pass"));
+	     adminUser.setUserPassword(passwordEncoder.encode("admin@pass"));
 //	     adminUser.setUserPassword("admin@pass");
 	     adminUser.setEmailId("admin@gmail.com");
 //	     adminUser.setId(1);
@@ -53,13 +53,15 @@ public class UserService {
 	        Set<Role> userRoles = new HashSet<>();
 	        userRoles.add(role);
 	        user.setRole(userRoles);
-	        user.setUserPassword(getEncodedPassword(user.getUserPassword()));
+	        user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
 
 	        return userdao.save(user);
 	    }
-	 public String getEncodedPassword(String password) {
-	        return passwordEncoder.encode(password);
-	    }
+	 
+//	 @Bean
+//	 public String getEncodedPassword(String password) {
+//	        return passwordEncoder.encode(password);
+//	    }
 	 
 	 
 	 //CRUD for user
@@ -71,9 +73,9 @@ public class UserService {
 			userdao.deleteById(username);
 			}
 		
-		public void UpdateUser(User user)
+		public User UpdateUser(User user)
 		{
-			userdao.save(user); 
+			return userdao.save(user); 
 		}
 	 
 }

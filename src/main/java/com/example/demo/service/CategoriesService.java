@@ -26,8 +26,8 @@ public class CategoriesService {
 		categoryDao.deleteById(Categoryid);
 		}
 	
-	public void Update(Category category)
+	public Category Update(Category category)
 	{
-		categoryDao.save(category); 
+		return categoryDao.save(category); 
 	}
 }

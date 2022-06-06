@@ -6,55 +6,84 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
-import javax.persistence.JoinColumn;
-import lombok.Data;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Transactional
 @Getter
 @Setter
-@Data
-@NoArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@Builder
 @Table(name = "user")
 public class User {
-
-	 	@Id
-//	    @GeneratedValue(strategy = GenerationType.AUTO)
+		@Id
 	    @Column(name="username")
 	 	private String userName;	
-	 	
-	 	@Column(name="emailid")
+		
+		@Email(message = "Email should be valid")
+		@Column(name="emailid")
 	 	private String EmailId;
 	 	
+		@NotEmpty
+		@Pattern(regexp="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$",
+		message="Password must contain 1 digit, 1 lowercase letter, 1 uppercase letter, 1 special character, white space is not allowed"
+				+ "and it should be between 8 to 20 characters")
 	 	@Column(name="userPassword")
 	 	private String userPassword;
 	 	
+		@NotEmpty
+		@Pattern(regexp="\"[a-zA-Z]\"",message="invalid Name")
 	 	@Column(name="name")
 	 	private String Name;
-		@Column(name="mobilenp")
 		
-	 	private int MobileNo;
+		@NotEmpty
+		@Pattern(regexp="(^$|[0-9]{10})", message="invalid mobile number")
+		@Size(min=10,max=12,message="invalid mobile number")
+		@Column(name="mobilenp")
+	 	private String MobileNo;
+		
+		@NotEmpty
+		@Pattern(regexp="^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$",
+		message="invalid Date of birth format it should be dd/mm/yyyy format")
 		@Column(name="dob")
-		java.util.Date DateOfBirth=new java.util.Date();
+		private String DateOfBirth;
+		
+		@Size(min = 10, max = 200, message= "About Me must be between 10 and 200 characters")
 		@Column(name="address")
 	 	private String Address;
+		
+		@NotEmpty
+		@Max(value=8,message="invalid pincode")
+		@Pattern(regexp="(^$|[0-9]{10})", message="invalid Pincode")
 		@Column(name="pincode")
 	 	private int PinCode;
+		
+		@NotEmpty
+		@Pattern(regexp="\"[a-zA-Z]\"",message="invalid state name")
 		@Column(name="State")
 	 	private String State;
+		
+		@NotEmpty
+		@Pattern(regexp="\"[a-zA-Z]\"",message="invalid City name")
 	 	@Column(name="city")
 	 	private String City;
+		
 	 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	    @JoinTable(name = "USER_ROLE",
 	            joinColumns = {
@@ -72,4 +101,29 @@ public class User {
 	    private Set<OrderDetail> orderdetails;
 //	 	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
 //	 	Set<User> user;
+	 	
+	 	public User(String userName, String emailId, String userPassword, String name, @NotEmpty @Pattern(regexp = "(^$|[0-9]{10})", message = "invalid mobile number") @Size(min = 10, max = 12, message = "invalid mobile number") String mobileNo, String dateOfBirth,
+				String address, int pinCode, String state, String city, Set<Role> role, Set<OrderDetail> orderdetails) {
+				super();
+				this.userName = userName;
+				EmailId = emailId;
+				this.userPassword = userPassword;
+				Name = name;
+				MobileNo = mobileNo;
+				DateOfBirth = dateOfBirth;
+				Address = address;
+				PinCode = pinCode;
+				State = state;
+				City = city;
+				this.role = role;
+				this.orderdetails = orderdetails;
+			}
+			public User() {
+				// TODO Auto-generated constructor stub
+			}
+//			public User(String userName2, String emailId2, String userPassword2, String name2, String mobileNo2,
+//					String dateOfBirth2, String address2, int pinCode2, String state2, String city2, Role role2,
+//					OrderDetail orderDetail) {
+//				// TODO Auto-generated constructor stub
+//			}
 }
