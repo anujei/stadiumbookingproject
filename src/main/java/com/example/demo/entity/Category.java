@@ -17,14 +17,18 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "category")
 public class Category {
 
@@ -54,24 +58,5 @@ public class Category {
 		
 		@ManyToMany(targetEntity =  OrderDetail.class ,cascade = CascadeType. ALL, fetch=FetchType.LAZY)
 	    @JoinColumn(name= "fk_categoryid",referencedColumnName = "Categoryid")
-	    private Set<OrderDetail> orderdetail;
-
-
-		public Category(int categoryid, @NotNull String categoryTitle,
-				@NotNull @Pattern(regexp = "(^$|[0-9]{10})", message = "only numeric allowed") Float price,
-				@NotNull boolean status,
-				@NotNull @Pattern(regexp = "(^$|[0-9]{10})", message = "only numeric allowed") int noOfSeat,
-				Set<OrderDetail> orderdetail) {
-			super();
-			Categoryid = categoryid;
-			CategoryTitle = categoryTitle;
-			this.price = price;
-			this.status = status;
-			NoOfSeat = noOfSeat;
-			this.orderdetail = orderdetail;
-		}
-		
-		
-		
-		
-	}
+	    private Set<OrderDetail> orderdetail;		
+}

@@ -1,32 +1,24 @@
 package com.example.demo.entity;
 
-import java.util.Set;
-
-import javax.annotation.Generated;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
-import org.hibernate.id.CompositeNestedGeneratedValueGenerator.GenerationContextLocator;
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Table(name = "order_detail")
 public class OrderDetail {
@@ -51,15 +43,5 @@ public class OrderDetail {
 	@NotNull
 	@Column(name="orderstatus")
 	private int OrderStatus;
-
-	public OrderDetail(int orderId, @NotNull int seatNo, @NotNull float total, @NotNull String paymentOption,
-			@NotNull int orderStatus) {
-		super();
-		OrderId = orderId;
-		SeatNo = seatNo;
-		this.total = total;
-		PaymentOption = paymentOption;
-		OrderStatus = orderStatus;
-	}
 	
 }
