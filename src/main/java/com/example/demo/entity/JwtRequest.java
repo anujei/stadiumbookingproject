@@ -1,15 +1,15 @@
 package com.example.demo.entity;
 public class JwtRequest {
 
-    private String userName;
+    private String EmailId;
     private String userPassword;
 
-    public String getUserName() {
-        return userName;
+    public String getEmailId() {
+        return EmailId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setEmailId(String EmailId) {
+        this.EmailId = EmailId;
     }
 
     public String getuserPassword() {

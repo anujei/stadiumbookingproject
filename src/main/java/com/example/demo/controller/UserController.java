@@ -50,8 +50,8 @@ public class UserController {
 	
 	 @DeleteMapping("/deleteUser/{Userid}")
 	 @PreAuthorize("hasRole('Admin')")
-	 public void deleteUser(@PathVariable("Userid") String username) {
-		 userService.deleteById(username);
+	 public void deleteUser(@PathVariable("Userid") String EmailId) {
+		 userService.deleteById(EmailId);
 	 }
 	 
 	 @PostMapping("/UpdateUser")
