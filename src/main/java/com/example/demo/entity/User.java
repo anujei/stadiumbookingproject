@@ -33,8 +33,8 @@ import lombok.Setter;
 @Table(name = "user")
 public class User {
 		@Id
-	    @Column(name="username")
-	 	private String userName;	
+//	    @Column(name="username")
+//	 	private String userName;	
 		
 		@Email(message = "Email should be valid")
 		@Column(name="emailid")
@@ -97,6 +97,6 @@ public class User {
 	 	
 	 	
 	 	@OneToMany(targetEntity =  OrderDetail.class ,cascade = CascadeType. ALL, fetch=FetchType.LAZY)
-	    @JoinColumn(name= "fk_userid",referencedColumnName = "username")
+	    @JoinColumn(name= "fk_userid",referencedColumnName = "EmailId")
 	    private Set<OrderDetail> orderdetails;
 }

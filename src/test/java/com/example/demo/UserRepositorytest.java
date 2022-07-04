@@ -45,7 +45,7 @@ public class UserRepositorytest {
 		OrderDetail orderdetail = new OrderDetail(1, 20, 200, "COD", 0);
 		Set<OrderDetail> orderset = new HashSet<>();
 		orderset.add(orderdetail);
-		when(userdao.findAll()).thenReturn(Stream.of(new User("anuj", "anuj", "Anuj", "Anuj@gmail.com", "9429506934", "11032000", "dfgfhg",5465656,"Gujarat","Ahmedabad",adminRoles,orderset)).collect(Collectors.toList()));
+		when(userdao.findAll()).thenReturn(Stream.of(new User("anuj", "anuj", "Anuj@gmail.com", "9429506934", "11032000", "dfgfhg",5465656,"Gujarat","Ahmedabad",adminRoles,orderset)).collect(Collectors.toList()));
 		assertEquals(1,((List<User>) service.findAll()).size());
 	}
 	@Test
@@ -62,7 +62,7 @@ public class UserRepositorytest {
 		orderset.add(orderdetail);
 		
 		// Register new User
-		User user = new User("anuj", "anuj", "Anuj", "Anuj@gmail.com", "9429506934", "11032000", "dfgfhg",5465656,"Gujarat","Ahmedabad",adminRoles,orderset);
+		User user = new User("anuj", "anuj", "Anuj@gmail.com", "9429506934", "11032000", "dfgfhg",5465656,"Gujarat","Ahmedabad",adminRoles,orderset);
 		when(userdao.save(user)).thenReturn(user);
 		assertEquals(user, service.registerNewUser(user));
 	}
@@ -83,7 +83,7 @@ public class UserRepositorytest {
 		OrderDetail orderdetail = new OrderDetail(1, 20, 200, "COD", 0);
 		Set<OrderDetail> orderset = new HashSet<>();
 		orderset.add(orderdetail);		
-		User user = new User("anuj", "anuj", "Anuj", "Anuj@gmail.com", "9429506934", "11032000", "dfgfhg",5465656,"Gujarat","Ahmedabad",adminRoles,orderset);
+		User user = new User("anuj", "anuj", "Anuj@gmail.com", "9429506934", "11032000", "dfgfhg",5465656,"Gujarat","Ahmedabad",adminRoles,orderset);
 		when(userdao.save(user)).thenReturn(user);
 		assertEquals(user, service.UpdateUser(user));
 	}

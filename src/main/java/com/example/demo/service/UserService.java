@@ -36,7 +36,7 @@ public class UserService {
 	     roleDao.save(userRole);
 	     
 	     User adminUser = new User();
-	     adminUser.setUserName("admin@123");
+//	     adminUser.setUserName("admin@123");
 	     adminUser.setName("admin123");
 	     adminUser.setUserPassword(passwordEncoder.encode("admin@pass"));
 //	     adminUser.setUserPassword("admin@pass");
@@ -54,7 +54,6 @@ public class UserService {
 	        userRoles.add(role);
 	        user.setRole(userRoles);
 	        user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
-
 	        return userdao.save(user);
 	    }
 	 
