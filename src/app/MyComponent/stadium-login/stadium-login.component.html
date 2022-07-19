@@ -1,0 +1,44 @@
+<h1>Login Form</h1>
+<div class="container">
+<form (ngSubmit)="LoginUser()">
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input type="email" id="emailId" name="emailId" [(ngModel)]="authRequest.emailId" class="form-control" />
+    <label class="form-label" for="emailId">Email Id</label>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <input type="password" id="userPassword" name="userPassword" [(ngModel)]="authRequest.userPassword" class="form-control" />
+    <i class="bi bi-eye-slash" id="togglePassword"></i>
+    <label class="form-label" for="userPassword">Password</label>
+  </div>
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>Not a member? <a routerLink="register">Register</a></p>
+  </div>
+</form>
+</div>
+<script>
+  const togglePassword = document.querySelector("#togglePassword");
+  const password = document.querySelector("#password");
+
+  togglePassword.addEventListener("click", function () {
+      // toggle the type attribute
+      const type = password.getAttribute("type") === "password" ? "text" : "password";
+      password.setAttribute("type", type);
+
+      // toggle the icon
+      this.classList.toggle("bi-eye");
+  });
+
+  // prevent form submit
+  const form = document.querySelector("form");
+  form.addEventListener('submit', function (e) {
+      e.preventDefault();
+  });
+</script>

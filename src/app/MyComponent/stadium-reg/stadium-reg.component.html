@@ -1,0 +1,127 @@
+<section class="h-100 bg-dark">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card card-registration my-4">
+          <div class="row g-0">
+            <div class="col-xl-6 d-none d-xl-block">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                alt="Sample photo" class="img-fluid"
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+            </div>
+            <div class="col-xl-6">
+              <div class="card-body p-md-5 text-black">
+                <h3 class="mb-5 text-uppercase">Sign Up</h3>
+                <form (ngSubmit)="registerNow()">
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input type="text" id="name" name="name" [(ngModel)]="user.name"
+                          class="form-control form-control-lg" />
+                        <label class="form-label" for="name">Name</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input type="password" id="userPassword" name="userPassword" [(ngModel)]="user.userPassword"
+                          class="form-control form-control-lg" />
+                        <label class="form-label" for="userPassword">Password</label>
+                      </div>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <div class="form-outline">
+                        <input type="email" class="form-control" id="emailId" name="emailId" [(ngModel)]="user.emailId"
+                          aria-describedby="emailHelp">
+                        <label for="emailId" class="form-label">Email address</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="user.dateOfBirth"
+                      class="form-control form-control-lg" />
+                    <label class="form-label" for="dateOfBirth">DOB</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="text" id="address" name="address" [(ngModel)]="user.address"
+                      class="form-control form-control-lg" />
+                    <label class="form-label" for="address">Address</label>
+                  </div>
+
+                  <!-- <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                  <h6 class="mb-0 me-4">Gender: </h6>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+                      value="option1" />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                      value="option2" />
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+                      value="option3" />
+                    <label class="form-check-label" for="otherGender">Other</label>
+                  </div>
+
+                </div> -->
+
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+
+                      <select class="select" name="state" [(ngModel)]="user.state">
+                        <option selected disabled value="state">State</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Goa">Goa</option>
+                      </select>
+
+                    </div>
+                    <div class="col-md-6 mb-4">
+
+                      <select class="select" name="city" [(ngModel)]="user.city">
+                        <option selected disabled value="city">City</option>
+                        <option value="Ahmedabad">Ahmedabad</option>
+                        <option value="Bhavnagar">Bhavanagar</option>
+                      </select>
+
+                    </div>
+                  </div>
+
+
+
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <input type="text" id="pinCode" name="pinCode" [(ngModel)]="user.pinCode"
+                        class="form-control form-control-lg" />
+                      <label class="form-label" for="pinCode">Pincode</label>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                      <input type="text" id="mobileNo" name="mobileNo" [(ngModel)]="user.mobileNo"
+                        class="form-control form-control-lg" />
+                      <label class="form-label" for="mobileNo">Mobile No</label>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-end pt-3">
+                    <button type="reset" class="btn btn-light btn-lg">Reset all</button>
+                    <button type="submit" class="btn btn-warning btn-lg ms-2" >Submit form</button>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- List of user -->
+<!-- {{message}} -->
+<!-- <h1>{{data}}</h1> -->
