@@ -1,0 +1,63 @@
+
+
+  <section class="section coming-soon" data-section="section3">
+    <div class="container d-flex align-items-center justify-content-center ">
+      <div class="row  align-items-center justify-content-center">
+        
+        <div class="col-md-6    " >
+          <div class="right-content">
+            <div class="top-content">
+              <h6>Register<em> Here </em> </h6>
+            </div>
+            <!--#registerForm="ngForm" (ngSubmit)="register(registerForm)"-->
+            <form  >
+              <div class="row">
+                <div class="col-md-12">
+                    <fieldset>
+                      <input name="Name" type="text" class="form-control" id="Name" ngModel placeholder="Your Name" required="">
+                    </fieldset>
+                  </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="emailId" type="Email" class="form-control" id="emailId" ngModel placeholder="Your Email" required="">
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="userPassword" type="password" class="form-control" id="userPassword" ngModel placeholder="Your Password" required="">
+                  </fieldset>
+                </div>
+                
+                <div class="col-md-12">
+                  <fieldset>
+                    <textarea name="Address" cols="2" rows="3" class="form-control" id="Address" ngModel placeholder="Your Address" required="" ></textarea>
+                  </fieldset>
+              </div>
+          
+                <div class="col-md-12 mt-3" >
+                  <fieldset>
+                    <input name="DateOfBirth" type="date" class="form-control" id="DateOfBirth" ngModel placeholder="Your Birthdate" required="">
+                  </fieldset>
+              </div>
+              <div class="col-md-12">
+                <fieldset> 
+              <select class="form-control" name="country" id="country">
+                <option value="" disabled selected>Select State</option>
+                <option *ngFor="let country of countries" [value]="country.name">{{country.name}}</option>
+              </select>
+            </fieldset>
+          </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <button type="submit" id="registerForm" class="button">Sign Up</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 

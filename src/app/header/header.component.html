@@ -1,0 +1,37 @@
+
+   
+  <!--header-->
+  <header class="main-header clearfix" role="header">
+    <div class="logo">
+      <a routerLink="/home"><em>Book</em>Ur Show</a>
+    </div>
+    <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+    <nav id="menu" class="main-nav" role="navigation">
+     
+
+    <ul class="main-menu">
+
+      <!--<li><a href="#section1">Home</a></li>
+        <li class="has-submenu"><a href="#section2">About Us</a>
+          <ul class="sub-menu">
+            <li><a href="#section2">Who we are?</a></li>
+            <li><a href="#section3">What we do?</a></li>
+            <li><a href="#section3">How it works?</a></li>
+            <li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
+          </ul>
+        </li> -->
+         <li><a routerLink="/user"  *ngIf= "isUserRoleMatch()">User</a></li>
+        <li><a routerLink="/admin"  *ngIf= "isAdminRoleMatch()">Admin</a></li>
+
+        <!--style ="background-color: #f5a425"-->
+        <li><a routerLink="/login" *ngIf="! isLoggedIn()" class = "btn " >Login</a></li>
+     
+        <li><a routerLink="/home" *ngIf=" isLoggedIn()" (click)= "logout()" class = "btn ">Logout</a></li>
+       
+      </ul>
+
+    </nav>
+  </header>
+
+  <!-- ***** Main Banner Area Start ***** -->
+ 
