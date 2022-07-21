@@ -15,26 +15,27 @@
         <a class="nav-link" routerLink="user" *ngIf="service.roleMatch('Admin')">User</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="service.roleMatch('Admin')">
-          Event
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Add Event</a>
-          <a class="dropdown-item" href="#">Event Details</a>
+
+        <div class="dropdown" *ngIf="service.roleMatch('Admin')">
+          <button class="dropbtn">Event</button>
+          <div class="dropdown-content">
+            <a routerLink="addevent">Add Event</a>
+            <a href="#">Event Details</a>
+          </div>
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="service.roleMatch('Admin')">
-          Category
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Add Category</a>
-          <a class="dropdown-item" href="#">Category Details</a>
+        <div class="dropdown" *ngIf="service.roleMatch('Admin')">
+          <button class="dropbtn">Category</button>
+          <div class="dropdown-content">
+            <a routerLink="addcategory">Add Category</a>
+            <a href="#">Category Details</a>
+          </div>
         </div>
       </li>
     </ul>
     <a class="dropdown-item" routerLink="login"  *ngIf="!isLoggedin()">Login</a>
+    <a class="dropdown-item" routerLink="register" *ngIf="!isLoggedin()">Register</a>
     <a class="dropdown-item" routerLink="login" *ngIf="isLoggedin()" (click)="Logout()">Logout</a>
-
   </div>
 </nav>

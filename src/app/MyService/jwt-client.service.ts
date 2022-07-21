@@ -35,7 +35,13 @@ export class JwtClientService {
     const headers = new HttpHeaders().set("Authorization", tokenStr);
     return this.http.get<any>(this.PATH_OF_API + '/viewUser', { headers });
   }
-
+  viewevent(): Observable<any> {
+    console.log(sessionStorage.getItem("jwtToken"));
+    let tokenStr = "Bearer " + sessionStorage.getItem('jwtToken');
+    console.log(tokenStr);
+    const headers = new HttpHeaders().set("Authorization", tokenStr);
+    return this.http.get<any>(this.PATH_OF_API + '/viewEvent', { headers });
+  }
 
   public doRegister(user: any) {
     console.log(user);
@@ -43,6 +49,24 @@ export class JwtClientService {
       headers: this.requestHeader,
     });
   }
+
+  public registerevent(event: any) {
+    console.log(event);
+    console.log(sessionStorage.getItem("jwtToken"));
+    let tokenStr = "Bearer " + sessionStorage.getItem('jwtToken');
+    console.log(tokenStr);
+    const headers = new HttpHeaders().set("Authorization", tokenStr);
+    return this.http.post(this.PATH_OF_API + '/createEvent', event, { headers });
+  }
+  public registercategory(category: any) {
+    console.log(category);
+    console.log(sessionStorage.getItem("jwtToken"));
+    let tokenStr = "Bearer " + sessionStorage.getItem('jwtToken');
+    console.log(tokenStr);
+    const headers = new HttpHeaders().set("Authorization", tokenStr);
+    return this.http.post(this.PATH_OF_API + '/createEvent', category, { headers });
+  }
+
   public roleMatch(allowedRoles: string): boolean {
     let isMatch = false;
     const userRoles = this.userAuthService.getRoles();
