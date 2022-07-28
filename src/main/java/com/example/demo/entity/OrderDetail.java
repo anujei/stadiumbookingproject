@@ -43,5 +43,4 @@ public class OrderDetail {
 	@NotNull
 	@Column(name="orderstatus")
 	private int OrderStatus;
-	
 }
