@@ -17,11 +17,17 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
+import lombok.extern.jackson.Jacksonized;
 
 @Entity
 @Getter
@@ -54,9 +60,20 @@ public class Category {
 		@Column(name="no_of_seat")
 		@Pattern(regexp="(^$|[0-9]{10})", message="only numeric allowed")
 		private int NoOfSeat;
+//		@JsonDeserialize(using = CustomParameterDeserializer.class)
 		
 		
-		@ManyToMany(targetEntity =  OrderDetail.class ,cascade = CascadeType. ALL, fetch=FetchType.LAZY)
+		@ManyToOne(fetch = FetchType.LAZY)
+	    @JoinColumn(name="fk_eventid" ,nullable=false)
+		@JsonBackReference
+	    private Event event;
+		
+//		@OneToMany(targetEntity =  Event.class ,cascade = CascadeType. ALL, fetch=FetchType.LAZY)
+//		@JoinColumn(name= "fk_eventid",referencedColumnName = "Eventid")
+//	    private int fk_eventid;
+		
+		
+		@ManyToMany(targetEntity =  OrderDetail.class ,cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	    @JoinColumn(name= "fk_categoryid",referencedColumnName = "Categoryid")
 	    private Set<OrderDetail> orderdetail;		
 }

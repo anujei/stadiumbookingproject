@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -16,7 +17,11 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,6 +31,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@Data
 @Table(name = "event")
 public class Event {
  	@Id
@@ -62,8 +68,9 @@ public class Event {
  	
 	//unidirectional one-to-many
 	//Entity detail relationship
-    @OneToMany(targetEntity =  Category.class ,cascade = CascadeType. ALL, fetch=FetchType.LAZY)
-    @JoinColumn(name= "fk_eventid",referencedColumnName = "Eventid")
-    private Set<Category> category;
+ 	
+ 	@OneToMany(mappedBy="event" , fetch = FetchType.LAZY)
+ 	@JsonManagedReference
+ 	private List<Category> category;
 }
 
